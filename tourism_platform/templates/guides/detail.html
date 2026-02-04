@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+<div class="mb-3">
+  <a href="/guides/" class="text-decoration-none">← رجوع للمرشدين</a>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="mb-1">{{ item.name }}</h2>
+    <div class="text-muted">{{ item.city }}</div>
+
+    <hr>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="text-muted small">السعر/اليوم</div>
+        <div class="fs-4 fw-bold">{{ item.price_per_day }}</div>
+      </div>
+      <div class="col-md-8">
+        <div class="text-muted small">اللغات</div>
+        <div class="fw-bold">{{ item.languages }}</div>
+        {% if item.specialties %}
+          <div class="text-muted mt-2">التخصصات: {{ item.specialties }}</div>
+        {% endif %}
+      </div>
+    </div>
+    <hr>
+<h5>آراء الزوار</h5>
+
+<ul class="list-group mb-4">
+  {% for r in reviews %}
+    <li class="list-group-item">
+      <b>{{ r.rating }}/5</b> — {{ r.user.username }}
+      {% if r.comment %}
+        — {{ r.comment }}
+      {% else %}
+        — <span class="text-muted">بدون تعليق</span>
+      {% endif %}
+    </li>
+  {% empty %}
+    <li class="list-group-item text-muted">
+      لا توجد تقييمات بعد.
+    </li>
+  {% endfor %}
+</ul>
+<hr>
+<h5>أضف تقييمك</h5>
+
+{% if user.is_authenticated %}
+  <form method="post" class="card shadow-sm mb-3">
+    <div class="card-body">
+      {% csrf_token %}
+      <div class="row g-2">
+        <div class="col-md-2">
+          <label class="form-label">التقييم (1-5)</label>
+          {{ form.rating }}
+        </div>
+        <div class="col-md-10">
+          <label class="form-label">تعليق (اختياري)</label>
+          {{ form.comment }}
+        </div>
+      </div>
+      <button class="btn btn-success mt-3">إرسال التقييم</button>
+    </div>
+  </form>
+{% else %}
+  <div class="alert alert-info">
+    يجب <a href="/accounts/login/?next={{ request.path }}" class="text-decoration-none">تسجيل الدخول</a> لإضافة تقييم.
+  </div>
+{% endif %}
+    <hr>
+    <h5>التقييمات</h5>
+    <ul class="mb-0">
+      {% for r in reviews %}
+        <li><b>{{ r.rating }}/5</b> — {{ r.comment }}</li>
+      {% empty %}
+        <li class="text-muted">لا توجد تقييمات بعد.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

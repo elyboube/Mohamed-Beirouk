@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+
+{# ====== سلايدر صور الإقامة ====== #}
+{% if images %}
+<div id="stayCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+
+  <div class="carousel-indicators">
+    {% for img in images %}
+      <button type="button"
+              data-bs-target="#stayCarousel"
+              data-bs-slide-to="{{ forloop.counter0 }}"
+              class="{% if forloop.first %}active{% endif %}"
+              aria-current="{% if forloop.first %}true{% endif %}"
+              aria-label="Slide {{ forloop.counter }}">
+      </button>
+    {% endfor %}
+  </div>
+
+  <div class="carousel-inner rounded-4 overflow-hidden shadow-sm">
+    {% for img in images %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="{{ img.file.url }}"
+             class="d-block w-100"
+             style="height:420px; object-fit:cover;"
+             alt="{{ item.name }}">
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#stayCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">السابق</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#stayCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">التالي</span>
+  </button>
+
+</div>
+{% endif %}
+
+{# ====== معلومات الإقامة ====== #}
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h2 class="mb-1">{{ item.name }}</h2>
+    <div class="text-muted">{{ item.city }} — {{ item.get_stay_type_display }}</div>
+    <hr>
+    <div>ابتداءً من <b>{{ item.start_price }}</b></div>
+    <div class="text-muted small mt-1">التقييم: <b>{{ item.rating }}</b> / 5</div>
+    {% if item.address %}<div class="text-muted small mt-1">{{ item.address }}</div>{% endif %}
+  </div>
+</div>
+
+{% endblock %}

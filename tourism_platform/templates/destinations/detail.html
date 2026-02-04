@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+<div class="mb-3">
+  <a href="/destinations/" class="text-decoration-none">← رجوع للوجهات</a>
+</div>
+
+{# ====== سلايدر صور الوجهة ====== #}
+{% if images %}
+<div id="destCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+
+  <div class="carousel-indicators">
+    {% for img in images %}
+      <button type="button"
+              data-bs-target="#destCarousel"
+              data-bs-slide-to="{{ forloop.counter0 }}"
+              class="{% if forloop.first %}active{% endif %}"
+              aria-current="{% if forloop.first %}true{% endif %}"
+              aria-label="Slide {{ forloop.counter }}">
+      </button>
+    {% endfor %}
+  </div>
+
+  <div class="carousel-inner rounded-4 overflow-hidden shadow-sm">
+    {% for img in images %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="{{ img.file.url }}"
+             class="d-block w-100"
+             style="height:420px; object-fit:cover;"
+             alt="{{ item.name }}">
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#destCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">السابق</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#destCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">التالي</span>
+  </button>
+
+</div>
+{% endif %}
+
+<!-- معلومات الوجهة -->
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-start flex-wrap">
+      <div>
+        <span class="badge badge-soft">{{ item.region }}</span>
+        <h2 class="mt-2">{{ item.name }}</h2>
+        <p class="text-muted">{{ item.description }}</p>
+      </div>
+
+      {% if item.best_time_to_visit %}
+      <div class="text-end">
+        <div class="text-muted small">أفضل وقت للزيارة</div>
+        <div class="fw-bold">{{ item.best_time_to_visit }}</div>
+      </div>
+      {% endif %}
+    </div>
+
+    <hr>
+
+    <h5>الأنشطة</h5>
+    <ul class="mb-0">
+      {% for a in item.activities.all %}
+        <li><b>{{ a.title }}</b> — {{ a.description|default:"" }}</li>
+      {% empty %}
+        <li class="text-muted">لا توجد أنشطة بعد.</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<!-- الإقامات المرتبطة -->
+<h4 class="mb-3">إقامات مقترحة</h4>
+<div class="row g-3 mb-4">
+  {% for s in related_stays %}
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <div class="fw-bold">{{ s.name }}</div>
+          <div class="text-muted small">{{ s.city }}</div>
+          <div class="mt-2">ابتداءً من <b>{{ s.start_price }}</b></div>
+          <div class="mt-2 text-muted small">التقييم: {{ s.rating }} / 5</div>
+          <a class="btn btn-success btn-sm mt-3" href="/stays/{{ s.id }}/">تفاصيل</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="text-muted">لا توجد إقامات مرتبطة بهذه الوجهة.</div>
+  {% endfor %}
+</div>
+
+<!-- المرشدون المرتبطون -->
+<h4 class="mb-3">مرشدون مقترحون</h4>
+<div class="row g-3">
+  {% for g in related_guides %}
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <div class="fw-bold">{{ g.name }}</div>
+          <div class="text-muted small">{{ g.city }}</div>
+          <div class="mt-2 text-muted small">اللغات: <b>{{ g.languages }}</b></div>
+          <div class="mt-2">
+            <span class="badge badge-soft">السعر/يوم: {{ g.price_per_day }}</span>
+          </div>
+          <a class="btn btn-success btn-sm mt-3" href="{% url 'guide_detail' g.id %}">الملف</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="text-muted">لا يوجد مرشدون مرتبطون بهذه الوجهة.</div>
+  {% endfor %}
+</div>
+
+{% endblock %}

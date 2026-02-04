@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}المرشدون{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3 class="mb-0">المرشدون السياحيون</h3>
+  <a class="btn btn-outline-success" href="/admin/guides/guide/">إضافة مرشد من لوحة التحكم</a>
+</div>
+
+<form method="get" class="card shadow-sm mb-3">
+  <div class="card-body">
+    <div class="row g-2">
+      <div class="col-md-4">
+        <label class="form-label">المدينة</label>
+        <input name="city" value="{{ city }}" class="form-control" placeholder="مثال: صنعاء">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label">اللغة</label>
+        <input name="language" value="{{ language }}" class="form-control" placeholder="مثال: عربي">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">حد أقصى للسعر/يوم</label>
+        <input name="max_price" value="{{ max_price }}" type="number" step="0.01" class="form-control">
+      </div>
+      <div class="col-md-2 d-grid align-items-end">
+        <button class="btn btn-success mt-4">تطبيق</button>
+      </div>
+    </div>
+    <div class="mt-2">
+      <a class="small text-decoration-none" href="/guides/">مسح الفلاتر</a>
+    </div>
+  </div>
+</form>
+
+<div class="row g-3">
+  {% for g in items %}
+  <div class="col-md-4">
+    <div class="card card-hover h-100 shadow-sm">
+
+      {# صورة المرشد (أول صورة مرفوعة) #}
+      {% with m=g.media.first %}
+        {% if m and m.file %}
+          <img src="{{ m.file.url }}"
+               class="card-img-top"
+               style="height:220px; object-fit:cover;"
+               alt="{{ g.name }}">
+        {% else %}
+          <div class="bg-light d-flex align-items-center justify-content-center"
+               style="height:220px;">
+            <span class="text-muted">لا توجد صورة</span>
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <div class="card-body">
+        <h5 class="mb-1">{{ g.name }}</h5>
+        <div class="text-muted small">{{ g.city }}</div>
+
+        <div class="mt-2 text-muted small">اللغات: <b>{{ g.languages }}</b></div>
+
+        {% if g.specialties %}
+          <div class="text-muted small">التخصص: {{ g.specialties }}</div>
+        {% endif %}
+
+        <div class="mt-2">
+          <span class="badge badge-soft">السعر/يوم: {{ g.price_per_day }}</span>
+        </div>
+
+        <a class="btn btn-success mt-3" href="{% url 'guide_detail' g.id %}">الملف</a>
+      </div>
+
+    </div>
+  </div>
+  {% empty %}
+    <div class="text-muted">
+      لا توجد نتائج. أضف مرشدين من
+      <a class="text-decoration-none" href="/admin/guides/guide/">لوحة التحكم</a>.
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

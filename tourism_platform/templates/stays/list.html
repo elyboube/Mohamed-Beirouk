@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}مقارنة الإقامة{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3 class="mb-0">مقارنة أسعار الإقامة</h3>
+  <a class="btn btn-outline-success" href="/admin/stays/stay/">إضافة بيانات من لوحة التحكم</a>
+</div>
+
+<form method="get" class="card shadow-sm mb-3">
+  <div class="card-body">
+    <div class="row g-2">
+      <div class="col-md-3">
+        <label class="form-label">المدينة</label>
+        <input name="city" value="{{ city }}" class="form-control" placeholder="مثال: صنعاء">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">السعر من</label>
+        <input name="min_price" value="{{ min_price }}" type="number" step="0.01" class="form-control">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">السعر إلى</label>
+        <input name="max_price" value="{{ max_price }}" type="number" step="0.01" class="form-control">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label">تقييم أدنى</label>
+        <input name="min_rating" value="{{ min_rating }}" type="number" step="0.1" class="form-control" placeholder="مثال: 4">
+      </div>
+      <div class="col-md-3 d-grid align-items-end">
+        <button class="btn btn-success mt-4">تطبيق الفلاتر</button>
+      </div>
+    </div>
+    <div class="mt-2">
+      <a class="small text-decoration-none" href="/stays/">مسح الفلاتر</a>
+    </div>
+  </div>
+</form>
+
+<div class="row g-3">
+  {% for s in items %}
+    <div class="col-md-4">
+      <div class="card card-hover h-100 shadow-sm">
+
+        {% with img=s.media.first %}
+          {% if img and img.file %}
+            <img
+              src="{{ img.file.url }}"
+              class="card-img-top"
+              style="height:220px; object-fit:cover;"
+              alt="{{ s.name }}"
+            >
+          {% else %}
+            <div class="bg-light d-flex align-items-center justify-content-center"
+                 style="height:220px;">
+              <span class="text-muted small">لا توجد صورة</span>
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <span class="badge badge-soft">{{ s.get_stay_type_display }}</span>
+              <h5 class="mt-2 mb-1">{{ s.name }}</h5>
+              <div class="text-muted small">{{ s.city }}</div>
+            </div>
+            <div class="text-end">
+              <div class="text-muted small">ابتداءً من</div>
+              <div class="fw-bold">{{ s.start_price }}</div>
+            </div>
+          </div>
+
+          <div class="mt-2 text-muted small">
+            التقييم: <b>{{ s.rating }}</b> / 5
+          </div>
+
+          <a class="btn btn-success mt-3" href="/stays/{{ s.id }}/">تفاصيل</a>
+        </div>
+
+      </div>
+    </div>
+  {% empty %}
+    <div class="text-muted">
+      لا توجد نتائج. جرّب تغيير الفلاتر أو أضف بيانات من
+      <a class="text-decoration-none" href="/admin/stays/stay/">لوحة التحكم</a>.
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

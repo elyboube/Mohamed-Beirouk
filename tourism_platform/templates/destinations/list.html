@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}الوجهات{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3 class="mb-0">الوجهات السياحية</h3>
+  <a class="btn btn-outline-success" href="{% url 'admin:destinations_destination_changelist' %}">
+    إضافة/تعديل من لوحة التحكم
+  </a>
+</div>
+
+<form class="row g-2 mb-3" method="get">
+  <div class="col-md-4">
+    <select name="region" class="form-select">
+      <option value="">كل المناطق</option>
+      {% for r in regions %}
+        <option value="{{ r }}" {% if selected_region == r %}selected{% endif %}>{{ r }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-success w-100">تطبيق</button>
+  </div>
+</form>
+
+<div class="row g-3">
+  {% for d in items %}
+    {% with m=d.media.first %}
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+
+          {% if m and m.file %}
+            <img
+              src="{{ m.file.url }}"
+              class="card-img-top"
+              style="height:220px; object-fit:cover;"
+              alt="{{ d.name }}"
+              loading="lazy"
+            >
+          {% else %}
+            <img
+              src="{% static 'img/placeholder-900x600.jpg' %}"
+              class="card-img-top"
+              style="height:220px; object-fit:cover;"
+              alt="{{ d.name }}"
+              loading="lazy"
+            >
+          {% endif %}
+
+          <div class="card-body">
+            <h5 class="mt-2">{{ d.name }}</h5>
+            <p class="text-muted mb-3">{{ d.description|truncatechars:100 }}</p>
+            <a href="{% url 'destination_detail' d.id %}" class="btn btn-success btn-sm">
+              تفاصيل
+            </a>
+          </div>
+
+        </div>
+      </div>
+    {% endwith %}
+  {% empty %}
+    <div class="text-muted">لا توجد وجهات</div>
+  {% endfor %}
+</div>
+{% endblock %}
