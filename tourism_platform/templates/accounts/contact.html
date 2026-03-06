@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}تواصل معنا{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg">
+        <div class="card-body p-5">
+          <h2 class="text-center mb-4">تواصل معنا</h2>
+          <p class="text-center text-muted mb-4">
+            هل لديك سؤال أو اقتراح؟ نحن هنا للمساعدة
+          </p>
+
+          <!-- Contact Information -->
+          <div class="row g-3 mb-5">
+            <div class="col-md-6">
+              <div class="card border-0 bg-light">
+                <div class="card-body text-center">
+                  <div class="mb-2">📧</div>
+                  <h6>البريد الإلكتروني</h6>
+                  <a href="mailto:info@gmail.com" class="text-decoration-none">info@gmail.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card border-0 bg-light">
+                <div class="card-body text-center">
+                  <div class="mb-2">💬</div>
+                  <h6>واتساب</h6>
+                  <a href="https://wa.me/22237471755" target="_blank" class="text-decoration-none">+222 37 471 755</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+
+          <form method="post" novalidate>
+            {% csrf_token %}
+
+            <div class="mb-3">
+              <label for="id_name" class="form-label">{{ form.name.label }}</label>
+              {{ form.name }}
+              {% if form.name.errors %}
+                <div class="invalid-feedback d-block">
+                  {{ form.name.errors }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              <label for="id_email" class="form-label">{{ form.email.label }}</label>
+              {{ form.email }}
+              {% if form.email.errors %}
+                <div class="invalid-feedback d-block">
+                  {{ form.email.errors }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              <label for="id_subject" class="form-label">{{ form.subject.label }}</label>
+              {{ form.subject }}
+              {% if form.subject.errors %}
+                <div class="invalid-feedback d-block">
+                  {{ form.subject.errors }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="mb-3">
+              <label for="id_message" class="form-label">{{ form.message.label }}</label>
+              {{ form.message }}
+              {% if form.message.errors %}
+                <div class="invalid-feedback d-block">
+                  {{ form.message.errors }}
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg">إرسال الرسالة</button>
+            </div>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

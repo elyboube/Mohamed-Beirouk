@@ -10,7 +10,36 @@
 
         <form method="post">
           {% csrf_token %}
-          {{ form.as_p }}
+          <div class="mb-3">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.username.errors }}
+          </div>
+          <div class="mb-3">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {{ form.email.errors }}
+          </div>
+          <div class="mb-3">
+            {{ form.first_name.label_tag }}
+            {{ form.first_name }}
+            {{ form.first_name.errors }}
+          </div>
+          <div class="mb-3">
+            {{ form.last_name.label_tag }}
+            {{ form.last_name }}
+            {{ form.last_name.errors }}
+          </div>
+          <div class="mb-3">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+          </div>
+          <div class="mb-3">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+          </div>
 
           <button class="btn btn-success w-100">إنشاء الحساب</button>
         </form>

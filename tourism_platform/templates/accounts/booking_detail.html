@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}تفاصيل الحجز{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- Back Button -->
+      <a href="{% url 'dashboard' %}" class="text-decoration-none mb-3 d-inline-block">← العودة إلى لوحة التحكم</a>
+
+      <!-- Header -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <h2 class="card-title">{{ booking.stay.name }}</h2>
+              <p class="text-muted">{{ booking.stay.city }} — {{ booking.stay.get_stay_type_display }}</p>
+            </div>
+            <div>
+              {% if booking.status == 'pending' %}
+                <span class="badge bg-warning text-dark fs-6">قيد الانتظار</span>
+              {% elif booking.status == 'confirmed' %}
+                <span class="badge bg-success fs-6">مؤكد</span>
+              {% else %}
+                <span class="badge bg-danger fs-6">ملغى</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Booking Details -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">تفاصيل الحجز</h5>
+        </div>
+        <div class="card-body">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <strong>📅 تاريخ الوصول</strong>
+                <div class="fs-5">{{ booking.check_in|date:"d/m/Y" }}</div>
+              </div>
+              <div class="mb-3">
+                <strong>📤 تاريخ المغادرة</strong>
+                <div class="fs-5">{{ booking.check_out|date:"d/m/Y" }}</div>
+              </div>
+              <div class="mb-3">
+                <strong>🌙 عدد الليالي</strong>
+                <div class="fs-5">{{ booking.check_out|add:"-1"|add:booking.check_in|add:"days" }}</div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <strong>👥 عدد النزلاء</strong>
+                <div class="fs-5">{{ booking.guests }}</div>
+              </div>
+              <div class="mb-3">
+                <strong>💰 السعر الإجمالي</strong>
+                <div class="fs-5 text-success fw-bold">{{ booking.total_price }} د.م</div>
+              </div>
+              <div class="mb-3">
+                <strong>🕐 تاريخ الحجز</strong>
+                <div class="text-muted small">{{ booking.created_at|date:"d/m/Y H:i" }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stay Info -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">معلومات الإقامة</h5>
+        </div>
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <strong>السعر لليلة الواحدة</strong>
+              <div>{{ booking.stay.start_price }} د.م</div>
+            </div>
+            <div class="col-md-6">
+              <strong>التقييم</strong>
+              <div>
+                {% for i in "12345" %}
+                  {% if i|add:"0"|add:"0" <= booking.stay.rating %}⭐{% else %}☆{% endif %}
+                {% endfor %}
+                {{ booking.stay.rating }}/5
+              </div>
+            </div>
+          </div>
+          {% if booking.stay.description %}
+            <hr>
+            <div>
+              <strong>الوصف</strong>
+              <p class="text-muted">{{ booking.stay.description }}</p>
+            </div>
+          {% endif %}
+          <a href="{% url 'stay_detail' booking.stay.id %}" class="btn btn-success btn-sm">عرض صفحة الإقامة</a>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      {% if booking.status == 'pending' %}
+        <div class="alert alert-warning">
+          <strong>ملاحظة:</strong> يمكنك إلغاء هذا الحجز إذا لم تعد بحاجة إليه.
+        </div>
+        <a href="{% url 'cancel_booking' booking.id %}" class="btn btn-danger">إلغاء الحجز</a>
+      {% elif booking.status == 'cancelled' %}
+        <div class="alert alert-danger">
+          <strong>تم إلغاء هذا الحجز</strong>. إذا كنت تريد حجزًا جديدًا، يمكنك زيارة صفحة الإقامة.
+        </div>
+      {% else %}
+        <div class="alert alert-success">
+          <strong>تم تأكيد الحجز!</strong> استمتع بإقامتك.
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

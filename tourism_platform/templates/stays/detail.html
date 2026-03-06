@@ -52,7 +52,83 @@
     <div>ابتداءً من <b>{{ item.start_price }}</b></div>
     <div class="text-muted small mt-1">التقييم: <b>{{ item.rating }}</b> / 5</div>
     {% if item.address %}<div class="text-muted small mt-1">{{ item.address }}</div>{% endif %}
+    {% if user.is_authenticated %}
+      <div class="mt-3 text-end">
+        <button class="btn btn-sm {% if is_favorite %}btn-danger{% else %}btn-outline-danger{% endif %}" onclick="toggleFavorite('stay', {{ item.id }})">
+          ♥ {% if is_favorite %}محذوفة من المفضلة{% else %}أضف للمفضلة{% endif %}
+        </button>
+      </div>
+    {% endif %}
   </div>
 </div>
 
+{% if booking_form %}
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h4 class="mb-3">حجز هذه الإقامة</h4>
+      <form method="post">
+        {% csrf_token %}
+        <div class="row g-2">
+          <div class="col-md-3">
+            <label class="form-label">الوصول</label>
+            {{ booking_form.check_in }}
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">المغادرة</label>
+            {{ booking_form.check_out }}
+          </div>
+          <div class="col-md-2">
+            <label class="form-label">النزلاء</label>
+            {{ booking_form.guests }}
+          </div>
+        </div>
+        <button class="btn btn-success mt-3">أطلب الحجز</button>
+      </form>
+    </div>
+  </div>
+{% elif user.is_authenticated %}
+  <div class="alert alert-info">يتطلب الحجز تسجيل دخولك.</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function toggleFavorite(contentType, pk){
+    const btn = event.target.closest('button');
+    const isFavorite = btn.classList.contains('btn-danger');
+    const endpoint = isFavorite ? 'remove_favorite' : 'add_favorite';
+    const url = `/stays/favorite/${endpoint}/${contentType}/${pk}/`;
+    const csrftoken = getCookie('csrftoken');
+
+    fetch(url, {method: 'POST', headers: {'X-CSRFToken': csrftoken}})
+      .then(r => r.json())
+      .then(data => {
+        if(data.status === 'added'){
+          btn.classList.remove('btn-outline-danger');
+          btn.classList.add('btn-danger');
+          btn.textContent = '♥ محذوفة من المفضلة';
+        } else if(data.status === 'removed'){
+          btn.classList.add('btn-outline-danger');
+          btn.classList.remove('btn-danger');
+          btn.textContent = '♥ أضف للمفضلة';
+        }
+      });
+}
+</script>
 {% endblock %}

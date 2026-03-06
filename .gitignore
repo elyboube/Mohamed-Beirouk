@@ -1,34 +1,36 @@
-# Environment
-.venv/
-venv/
-env/
-ENV/
-
-# Database
-db.sqlite3
-*.db
-
-# Python
-__pycache__/
+# Django
 *.py[cod]
-*$py.class
+__pycache__/
 *.so
 .Python
+env/
+venv/
+.venv
+*.egg-info/
+dist/
+build/
+.env
+db.sqlite3
+*.log
+local_settings.py
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
+.DS_Store
 
-# Media and static
-media/
-staticfiles/
+# Media & Static
+/media/
+/staticfiles/
+/static/
+
+# Testing
+.coverage
+htmlcov/
 
 # OS
 .DS_Store
 Thumbs.db
-
-# Django
-*.log
-local_settings.py

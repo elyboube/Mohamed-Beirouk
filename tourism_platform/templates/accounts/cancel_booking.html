@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}إلغاء الحجز{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm border-danger">
+        <div class="card-body">
+          <h3 class="card-title text-danger mb-3">⚠️ تأكيد إلغاء الحجز</h3>
+          
+          <div class="alert alert-light border border-danger">
+            <strong>{{ booking.stay.name }}</strong>
+            <div class="text-muted small mt-2">
+              {{ booking.check_in }} إلى {{ booking.check_out }}
+            </div>
+            <div class="fw-bold text-danger mt-2">
+              {{ booking.total_price }} د.م
+            </div>
+          </div>
+
+          <p class="text-muted mb-4">
+            هل أنت متأكد من رغبتك في إلغاء هذا الحجز؟ لا يمكن التراجع عن هذا القرار.
+          </p>
+
+          <form method="post">
+            {% csrf_token %}
+            <div class="d-grid gap-2 mb-3">
+              <button type="submit" class="btn btn-danger btn-lg">نعم، ألغِ الحجز</button>
+            </div>
+            <a href="{% url 'booking_detail' booking.id %}" class="btn btn-light btn-lg w-100">إلغاء والعودة</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

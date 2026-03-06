@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}لوحة التحكم{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-4">لوحة التحكم</h2>
+
+  <!-- المفضلات Section -->
+  {% if dest_favs or stay_favs %}
+    <h4 class="mb-3">المفضلات ❤️</h4>
+    <div class="row g-3 mb-5">
+      {% for f in dest_favs %}
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <div class="badge bg-info mb-2">وجهة</div>
+              <h6 class="card-title">{{ f.destination.name }}</h6>
+              <p class="text-muted small mb-3">{{ f.destination.region }}</p>
+              <a href="{% url 'destination_detail' f.destination.id %}" class="btn btn-sm btn-outline-primary">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% for f in stay_favs %}
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <div class="badge bg-warning mb-2 text-dark">إقامة</div>
+              <h6 class="card-title">{{ f.stay.name }}</h6>
+              <p class="text-muted small mb-3">{{ f.stay.city }}</p>
+              <a href="{% url 'stay_detail' f.stay.id %}" class="btn btn-sm btn-outline-primary">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- الحجوزات Section -->
+  <h4 class="mb-3">الحجوزات 🏨</h4>
+  {% if bookings %}
+    <div class="row g-3">
+      {% for b in bookings %}
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h6 class="card-title">{{ b.stay.name }}</h6>
+                <!-- Status Badge -->
+                {% if b.status == 'pending' %}
+                  <span class="badge bg-warning text-dark">قيد الانتظار</span>
+                {% elif b.status == 'confirmed' %}
+                  <span class="badge bg-success">مؤكد</span>
+                {% else %}
+                  <span class="badge bg-danger">ملغى</span>
+                {% endif %}
+              </div>
+              
+              <div class="booking-details small text-muted mb-3">
+                <div class="mb-2">
+                  <strong>📍 المدينة:</strong> {{ b.stay.city }}
+                </div>
+                <div class="mb-2">
+                  <strong>📅 التواريخ:</strong> {{ b.check_in }} إلى {{ b.check_out }}
+                </div>
+                <div class="mb-2">
+                  <strong>👥 عدد النزيل:</strong> {{ b.guests }}
+                </div>
+                <div class="mb-2">
+                  <strong>💰 السعر الإجمالي:</strong> {{ b.total_price }} د.م
+                </div>
+              </div>
+
+              <a href="{% url 'booking_detail' b.id %}" class="btn btn-sm btn-primary">عرض التفاصيل</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <h5>لم تقم بأي حجوزات بعد</h5>
+      <p class="mb-0">استكشف الإقامات المتاحة وقم بحجز واحدة الآن!</p>
+      <a href="{% url 'stay_list' %}" class="btn btn-sm btn-info mt-3">استكشف الإقامات</a>
+    </div>
+  {% endif %}
+</div>
+
+{% endblock %}
