@@ -1,5 +1,6 @@
 
 {% extends "base.html" %}
+{% load currency %}
 {% block title %}الرئيسية{% endblock %}
 
 {% block content %}
@@ -125,6 +126,62 @@
   </div>
   {% empty %}
     <div class="text-muted">لا توجد وجهات منشورة بعد. أضف وجهات من لوحة التحكم.</div>
+  {% endfor %}
+</div>
+
+<hr class="my-5">
+
+{# ====== مرشدون مقترحون ====== #}
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <h4 class="mb-0">مرشدون سياحيون مقترحون</h4>
+  <a class="text-decoration-none" href="/guides/">عرض الكل</a>
+</div>
+
+<div class="row g-3 mb-4">
+  {% for g in featured_guides %}
+  <div class="col-md-4">
+    <div class="card card-hover h-100 shadow-sm">
+      <div class="card-body">
+        <h5>{{ g.name }}</h5>
+        <div class="text-muted small mb-2">📍 {{ g.city }}</div>
+        <div class="text-muted small mb-2">🌐 {{ g.languages }}</div>
+        {% if g.specialties %}
+          <div class="text-muted small mb-2">🎯 {{ g.specialties }}</div>
+        {% endif %}
+        <div class="badge bg-info text-white mt-2">💰 {{ g.price_per_day|format_um }}/اليوم</div>
+        <a class="btn btn-success mt-3 w-100" href="/guides/{{ g.id }}/">الملف الشخصي</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+    <div class="text-muted">لا توجد مرشدون منشورون بعد. أضف مرشدين من لوحة التحكم.</div>
+  {% endfor %}
+</div>
+
+<hr class="my-5">
+
+{# ====== إقامات مقترحة ====== #}
+<div class="d-flex justify-content-between align-items-center mb-2">
+  <h4 class="mb-0">إقامات برأسمال منخفض</h4>
+  <a class="text-decoration-none" href="/stays/">عرض الكل</a>
+</div>
+
+<div class="row g-3 mb-4">
+  {% for s in cheapest_stays %}
+  <div class="col-md-4">
+    <div class="card card-hover h-100 shadow-sm">
+      <div class="card-body">
+        <h5>{{ s.name }}</h5>
+        <div class="text-muted small mb-2">📍 {{ s.city }}</div>
+        <div class="text-muted small mb-2">{{ s.get_stay_type_display }}</div>
+        <div class="badge bg-warning text-dark mt-2">⭐ {{ s.rating }}/5</div>
+        <div class="fw-bold text-success mt-3">{{ s.start_price|format_um }}/الليلة</div>
+        <a class="btn btn-success mt-3 w-100" href="/stays/{{ s.id }}/">الحجز الآن</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+    <div class="text-muted">لا توجد إقامات منشورة بعد. أضف إقامات من لوحة التحكم.</div>
   {% endfor %}
 </div>
 

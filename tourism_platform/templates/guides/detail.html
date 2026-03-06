@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load currency %}
 {% block title %}{{ item.name }}{% endblock %}
 
 {% block content %}
@@ -14,14 +15,14 @@
     <hr>
     <div class="row g-3">
       <div class="col-md-4">
-        <div class="text-muted small">السعر/اليوم</div>
-        <div class="fs-4 fw-bold">{{ item.price_per_day }}</div>
+        <div class="text-muted small">💰 السعر/اليوم</div>
+        <div class="fs-4 fw-bold text-success">{{ item.price_per_day|format_um }}</div>
       </div>
       <div class="col-md-8">
-        <div class="text-muted small">اللغات</div>
+        <div class="text-muted small">🗯️ اللغات</div>
         <div class="fw-bold">{{ item.languages }}</div>
         {% if item.specialties %}
-          <div class="text-muted mt-2">التخصصات: {{ item.specialties }}</div>
+          <div class="text-muted mt-2">🎨 التخصصات: {{ item.specialties }}</div>
         {% endif %}
       </div>
     </div>

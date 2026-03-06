@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load currency %}
 {% block title %}المرشدون{% endblock %}
 
 {% block content %}
@@ -11,23 +12,23 @@
   <div class="card-body">
     <div class="row g-2">
       <div class="col-md-4">
-        <label class="form-label">المدينة</label>
-        <input name="city" value="{{ city }}" class="form-control" placeholder="مثال: صنعاء">
+        <label class="form-label"><strong>🌐 المدينة</strong></label>
+        <input name="city" value="{{ city }}" class="form-control" placeholder="مثال: نواكشوط">
       </div>
       <div class="col-md-4">
-        <label class="form-label">اللغة</label>
-        <input name="language" value="{{ language }}" class="form-control" placeholder="مثال: عربي">
+        <label class="form-label"><strong>🗯️ اللغة</strong></label>
+        <input name="language" value="{{ language }}" class="form-control" placeholder="مثال: عربي, فرنسي">
       </div>
-      <div class="col-md-2">
-        <label class="form-label">حد أقصى للسعر/يوم</label>
-        <input name="max_price" value="{{ max_price }}" type="number" step="0.01" class="form-control">
+      <div class="col-md-3">
+        <label class="form-label"><strong>💰 حد أقصى للسعر</strong></label>
+        <input name="max_price" value="{{ max_price }}" type="number" step="100" class="form-control" placeholder="باللأوقية">
       </div>
-      <div class="col-md-2 d-grid align-items-end">
-        <button class="btn btn-success mt-4">تطبيق</button>
+      <div class="col-md-1 d-grid align-items-end">
+        <button class="btn btn-success mt-4">🔍 بحث</button>
       </div>
     </div>
     <div class="mt-2">
-      <a class="small text-decoration-none" href="/guides/">مسح الفلاتر</a>
+      <a class="small text-decoration-none" href="/guides/">✖️ مسح الفلاتر</a>
     </div>
   </div>
 </form>
@@ -63,7 +64,7 @@
         {% endif %}
 
         <div class="mt-2">
-          <span class="badge badge-soft">السعر/يوم: {{ g.price_per_day }}</span>
+          <span class="badge badge-soft bg-info text-white">💰 {{ g.price_per_day|format_um }}/اليوم</span>
         </div>
 
         <a class="btn btn-success mt-3" href="{% url 'guide_detail' g.id %}">الملف</a>
