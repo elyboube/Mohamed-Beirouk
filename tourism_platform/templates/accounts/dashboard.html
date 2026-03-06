@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load currency %}
 {% block title %}لوحة التحكم{% endblock %}
 
 {% block content %}
@@ -67,7 +68,7 @@
                   <strong>👥 عدد النزيل:</strong> {{ b.guests }}
                 </div>
                 <div class="mb-2">
-                  <strong>💰 السعر الإجمالي:</strong> {{ b.total_price }} د.م
+                  <strong>💰 السعر الإجمالي:</strong> {{ b.total_price|format_um }}
                 </div>
               </div>
 

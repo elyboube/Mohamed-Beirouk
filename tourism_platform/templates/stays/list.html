@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load currency %}
 {% block title %}مقارنة الإقامة{% endblock %}
 
 {% block content %}
@@ -66,7 +67,7 @@
             </div>
             <div class="text-end">
               <div class="text-muted small">ابتداءً من</div>
-              <div class="fw-bold">{{ s.start_price }}</div>
+              <div class="fw-bold">{{ s.start_price|format_um }}</div>
             </div>
           </div>
 

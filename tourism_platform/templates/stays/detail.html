@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load currency %}
 {% block title %}{{ item.name }}{% endblock %}
 
 {% block content %}
@@ -49,7 +50,7 @@
     <h2 class="mb-1">{{ item.name }}</h2>
     <div class="text-muted">{{ item.city }} — {{ item.get_stay_type_display }}</div>
     <hr>
-    <div>ابتداءً من <b>{{ item.start_price }}</b></div>
+    <div>ابتداءً من <b>{{ item.start_price|format_um }}</b></div>
     <div class="text-muted small mt-1">التقييم: <b>{{ item.rating }}</b> / 5</div>
     {% if item.address %}<div class="text-muted small mt-1">{{ item.address }}</div>{% endif %}
     {% if user.is_authenticated %}

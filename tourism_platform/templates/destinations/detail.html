@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load currency %}
 {% block title %}{{ item.name }}{% endblock %}
 
 {% block content %}
@@ -153,7 +154,7 @@
         <div class="card-body">
           <div class="fw-bold">{{ s.name }}</div>
           <div class="text-muted small">{{ s.city }}</div>
-          <div class="mt-2">ابتداءً من <b>{{ s.start_price }}</b></div>
+          <div class="mt-2">ابتداءً من <b>{{ s.start_price|format_um }}</b></div>
           <div class="mt-2 text-muted small">التقييم: {{ s.rating }} / 5</div>
           <a class="btn btn-success btn-sm mt-3" href="/stays/{{ s.id }}/">تفاصيل</a>
         </div>
