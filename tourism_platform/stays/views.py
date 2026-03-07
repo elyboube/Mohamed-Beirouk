@@ -23,6 +23,12 @@ def stay_list(request):
 
     cities = Stay.objects.values_list('city', flat=True).distinct()
 
+    # Handle comparison selection
+    compare_ids = request.GET.getlist('compare')
+    compare_stays = []
+    if compare_ids:
+        compare_stays = Stay.objects.filter(id__in=compare_ids)
+
     context = {
         "items": qs,
         "cities": cities,
@@ -30,8 +36,28 @@ def stay_list(request):
         "min_price": min_price,
         "max_price": max_price,
         "min_rating": min_rating,
+        "compare_stays": compare_stays,
+        "compare_ids": compare_ids,
     }
     return render(request, "stays/list.html", context)
+
+def stay_comparison(request):
+    ids_string = request.GET.get('ids', '')
+    if not ids_string:
+        return redirect('stay_list')
+    
+    try:
+        compare_ids = [int(id.strip()) for id in ids_string.split(',') if id.strip()]
+    except ValueError:
+        return redirect('stay_list')
+    
+    stays = Stay.objects.filter(id__in=compare_ids)
+    if not stays:
+        return redirect('stay_list')
+    
+    return render(request, "stays/comparison.html", {
+        "stays": stays,
+    })
 
 def stay_detail(request, pk):
     item = get_object_or_404(Stay, pk=pk)

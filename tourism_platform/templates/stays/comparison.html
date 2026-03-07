@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% load currency %}
+{% block title %}مقارنة الإقامة{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h3 class="mb-0">مقارنة الإقامة</h3>
+  <a class="btn btn-outline-primary" href="/stays/">العودة للقائمة</a>
+</div>
+
+{% if stays %}
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>الخاصية</th>
+        {% for stay in stays %}
+        <th class="text-center">{{ stay.name }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>النوع</strong></td>
+        {% for stay in stays %}
+        <td class="text-center">
+          <span class="badge badge-soft">{{ stay.get_stay_type_display }}</span>
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td><strong>المدينة</strong></td>
+        {% for stay in stays %}
+        <td class="text-center">{{ stay.city }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td><strong>السعر الابتدائي</strong></td>
+        {% for stay in stays %}
+        <td class="text-center fw-bold text-success">{{ stay.start_price|format_um }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td><strong>التقييم</strong></td>
+        {% for stay in stays %}
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="rating-stars">
+              {% for i in "12345" %}
+                {% if forloop.counter <= stay.rating %}
+                  <i class="fas fa-star text-warning"></i>
+                {% else %}
+                  <i class="far fa-star text-warning"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <span class="ms-1">{{ stay.rating }}/5</span>
+          </div>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td><strong>العنوان</strong></td>
+        {% for stay in stays %}
+        <td class="text-center">{{ stay.address|default:"غير محدد" }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td><strong>الوصف</strong></td>
+        {% for stay in stays %}
+        <td class="small">{{ stay.description|truncatechars:100|default:"لا يوجد وصف" }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td><strong>الصور</strong></td>
+        {% for stay in stays %}
+        <td class="text-center">
+          {% with img=stay.media.first %}
+            {% if img and img.file %}
+              <img src="{{ img.file.url }}" alt="{{ stay.name }}" 
+                   style="width: 80px; height: 60px; object-fit: cover; border-radius: 4px;">
+            {% else %}
+              <span class="text-muted small">لا توجد صورة</span>
+            {% endif %}
+          {% endwith %}
+        </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        <td><strong>الإجراءات</strong></td>
+        {% for stay in stays %}
+        <td class="text-center">
+          <a class="btn btn-sm btn-success" href="/stays/{{ stay.id }}/">تفاصيل</a>
+        </td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Detailed Comparison Cards -->
+<div class="row g-3 mt-4">
+  {% for stay in stays %}
+  <div class="col-md-{% if stays|length == 1 %}12{% elif stays|length == 2 %}6{% elif stays|length == 3 %}4{% else %}3{% endif %}">
+    <div class="card h-100 shadow-sm">
+      {% with img=stay.media.first %}
+        {% if img and img.file %}
+          <img src="{{ img.file.url }}" class="card-img-top" 
+               style="height: 200px; object-fit: cover;" alt="{{ stay.name }}">
+        {% else %}
+          <div class="bg-light d-flex align-items-center justify-content-center"
+               style="height: 200px;">
+            <span class="text-muted">لا توجد صورة</span>
+          </div>
+        {% endif %}
+      {% endwith %}
+      
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <div>
+            <span class="badge badge-soft mb-2">{{ stay.get_stay_type_display }}</span>
+            <h5 class="card-title">{{ stay.name }}</h5>
+            <p class="card-text text-muted small">{{ stay.city }}</p>
+          </div>
+          <div class="text-end">
+            <div class="text-success fw-bold fs-5">{{ stay.start_price|format_um }}</div>
+            <div class="text-muted small">ابتداءً من</div>
+          </div>
+        </div>
+        
+        <div class="mb-2">
+          <div class="rating-stars mb-1">
+            {% for i in "12345" %}
+              {% if forloop.counter <= stay.rating %}
+                <i class="fas fa-star text-warning"></i>
+              {% else %}
+                <i class="far fa-star text-warning"></i>
+              {% endif %}
+            {% endfor %}
+            <span class="ms-1 small">{{ stay.rating }}/5</span>
+          </div>
+        </div>
+        
+        {% if stay.description %}
+        <p class="card-text small text-muted">{{ stay.description|truncatechars:120 }}</p>
+        {% endif %}
+        
+        <a href="/stays/{{ stay.id }}/" class="btn btn-success w-100">عرض التفاصيل</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% else %}
+<div class="alert alert-warning">
+  <h5>لا توجد إقامات للمقارنة</h5>
+  <p>يرجى العودة للقائمة واختيار إقامات للمقارنة.</p>
+  <a class="btn btn-primary" href="/stays/">العودة للقائمة</a>
+</div>
+{% endif %}
+
+<style>
+.rating-stars {
+  display: inline-block;
+}
+
+.badge-soft {
+  background-color: rgba(0, 123, 255, 0.1);
+  color: #0056b3;
+}
+
+.card-hover {
+  transition: transform 0.2s;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+}
+</style>
+{% endblock %}

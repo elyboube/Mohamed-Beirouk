@@ -5,7 +5,13 @@
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h3 class="mb-0">مقارنة أسعار الإقامة</h3>
-  <a class="btn btn-outline-success" href="/admin/stays/stay/">إضافة بيانات من لوحة التحكم</a>
+  <div>
+    {% if compare_ids %}
+      <a class="btn btn-primary me-2" href="/stays/comparison/?ids={{ compare_ids|join:',' }}">مقارنة المحدد ({{ compare_ids|length }})</a>
+      <a class="btn btn-outline-secondary" href="/stays/">مسح التحديد</a>
+    {% endif %}
+    <a class="btn btn-outline-success" href="/admin/stays/stay/">إضافة بيانات من لوحة التحكم</a>
+  </div>
 </div>
 
 <form method="get" class="card shadow-sm mb-3">
@@ -13,7 +19,7 @@
     <div class="row g-2">
       <div class="col-md-3">
         <label class="form-label">المدينة</label>
-        <input name="city" value="{{ city }}" class="form-control" placeholder="مثال: صنعاء">
+        <input name="city" value="{{ city }}" class="form-control" placeholder="مثال: اطار">
       </div>
       <div class="col-md-2">
         <label class="form-label">السعر من</label>
@@ -41,6 +47,17 @@
   {% for s in items %}
     <div class="col-md-4">
       <div class="card card-hover h-100 shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <div class="form-check">
+            <input class="form-check-input compare-checkbox" type="checkbox" 
+                   value="{{ s.id }}" id="compare_{{ s.id }}"
+                   {% if s.id|stringformat:"s" in compare_ids %}checked{% endif %}>
+            <label class="form-check-label small" for="compare_{{ s.id }}">
+              اختر للمقارنة
+            </label>
+          </div>
+          <span class="badge badge-soft">{{ s.get_stay_type_display }}</span>
+        </div>
 
         {% with img=s.media.first %}
           {% if img and img.file %}
@@ -61,7 +78,6 @@
         <div class="card-body">
           <div class="d-flex justify-content-between align-items-start">
             <div>
-              <span class="badge badge-soft">{{ s.get_stay_type_display }}</span>
               <h5 class="mt-2 mb-1">{{ s.name }}</h5>
               <div class="text-muted small">{{ s.city }}</div>
             </div>
@@ -87,4 +103,28 @@
     </div>
   {% endfor %}
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.compare-checkbox');
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            updateCompareSelection();
+        });
+    });
+    
+    function updateCompareSelection() {
+        const checkedBoxes = document.querySelectorAll('.compare-checkbox:checked');
+        const ids = Array.from(checkedBoxes).map(cb => cb.value);
+        
+        // Update URL with selected IDs
+        const url = new URL(window.location);
+        url.searchParams.delete('compare');
+        ids.forEach(id => url.searchParams.append('compare', id));
+        
+        window.location.href = url.toString();
+    }
+});
+</script>
 {% endblock %}
