@@ -15,6 +15,10 @@ class StayAdmin(admin.ModelAdmin):
         ("Informations", {
             "fields": ("name", "stay_type", "city", "address")
         }),
+        ("Localisation", {
+            "fields": ("latitude", "longitude"),
+            "description": "إحداثيات GPS للموقع على الخريطة"
+        }),
         ("Prix & Évaluation", {
             "fields": ("start_price", "rating")
         }),

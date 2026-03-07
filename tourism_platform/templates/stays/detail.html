@@ -63,6 +63,15 @@
   </div>
 </div>
 
+{# ====== الموقع على الخريطة ====== #}
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+    <h5 class="mb-3">الموقع على الخريطة</h5>
+    <div id="map" style="height:360px; width:100%; border-radius:8px;" data-lat="{{ item.latitude|default:'' }}" data-lng="{{ item.longitude|default:'' }}"></div>
+    <small class="text-muted">إذا لم تظهر علامة، فليس للموقع إحداثيات محفوظة.</small>
+  </div>
+</div>
+
 {% if booking_form %}
   <div class="card shadow-sm mb-4">
     <div class="card-body">
@@ -93,7 +102,15 @@
 
 {% endblock %}
 
+{% block extra_head %}
+<!-- Leaflet CSS (OpenStreetMap) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-XwwgNjim26qu0i7fiPTQhcFmCt8D5uSrnJGVN3ZP71lSVJjgqA3MgVeSVqCYrbj34mUx9IfsR6McQsiNOldh/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
 {% block extra_scripts %}
+<!-- Leaflet JS (OpenStreetMap) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-WXoSL2lrKOSIDHkf9S1r5ZT4D5IH+idbLIo2MySTYr3V6aredL6puieZ+2/1K7tAn8+ab2l9TZsorMl6ACsDkA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script>
 function getCookie(name) {
     let cookieValue = null;
@@ -108,6 +125,29 @@ function getCookie(name) {
         }
     }
     return cookieValue;
+}
+
+function initMap(){
+    const mapEl = document.getElementById('map');
+    if(!mapEl) return;
+    
+    const lat = parseFloat(mapEl.dataset.lat);
+    const lng = parseFloat(mapEl.dataset.lng);
+    const hasCoords = !isNaN(lat) && !isNaN(lng) && mapEl.dataset.lat !== '' && mapEl.dataset.lng !== '';
+    
+    const center = hasCoords ? [lat, lng] : [31.7917, -7.0926]; // Default to Morocco center
+    const zoom = hasCoords ? 12 : 5;
+    
+    const map = L.map('map').setView(center, zoom);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 19
+    }).addTo(map);
+    
+    if(hasCoords){
+      L.marker(center).addTo(map).bindPopup("<b>{{ item.name }}</b><br>{{ item.city }}<br>{{ item.address|default:'' }}");
+    }
 }
 
 function toggleFavorite(contentType, pk){
@@ -131,5 +171,7 @@ function toggleFavorite(contentType, pk){
         }
       });
 }
+
+document.addEventListener('DOMContentLoaded', initMap);
 </script>
 {% endblock %}

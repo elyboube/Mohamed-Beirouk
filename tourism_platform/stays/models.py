@@ -15,6 +15,8 @@ class Stay(models.Model):
     start_price = models.DecimalField(max_digits=15, decimal_places=2, help_text="السعر باللأوقية (UM)")
     rating = models.DecimalField(max_digits=2, decimal_places=1, default=4.0)
     address = models.CharField(max_length=250, blank=True)
+    latitude = models.FloatField(blank=True, null=True, help_text="خط العرض")
+    longitude = models.FloatField(blank=True, null=True, help_text="خط الطول")
     description = models.TextField(blank=True)
 
     def __str__(self):

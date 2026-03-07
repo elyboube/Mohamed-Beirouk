@@ -104,6 +104,24 @@
   {% endfor %}
 </div>
 
+{# ====== الخريطة التفاعلية ====== #}
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+    <h5 class="mb-3">الموقع على الخريطة</h5>
+    <div id="stays-map" style="height:400px; width:100%; border-radius:8px;"></div>
+    <small class="text-muted">انقر على العلامات لرؤية تفاصيل الإقامة</small>
+  </div>
+</div>
+
+{% block extra_head %}
+<!-- Leaflet CSS (OpenStreetMap) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-XwwgNjim26qu0i7fiPTQhcFmCt8D5uSrnJGVN3ZP71lSVJjgqA3MgVeSVqCYrbj34mUx9IfsR6McQsiNOldh/A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+{% block extra_scripts %}
+<!-- Leaflet JS (OpenStreetMap) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-WXoSL2lrKOSIDHkf9S1r5ZT4D5IH+idbLIo2MySTYr3V6aredL6puieZ+2/1K7tAn8+ab2l9TZsorMl6ACsDkA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const checkboxes = document.querySelectorAll('.compare-checkbox');
@@ -125,6 +143,70 @@ document.addEventListener('DOMContentLoaded', function() {
         
         window.location.href = url.toString();
     }
+
+    // Initialize map
+    initStaysMap();
 });
+
+function initStaysMap() {
+    const mapEl = document.getElementById('stays-map');
+    if (!mapEl) return;
+
+    // Default center (Morocco)
+    const defaultCenter = [31.7917, -7.0926];
+    const defaultZoom = 5;
+
+    const map = L.map('stays-map').setView(defaultCenter, defaultZoom);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19
+    }).addTo(map);
+
+    // Add markers for stays
+    const staysData = [
+        {% for stay in items %}
+        {% if stay.latitude and stay.longitude %}
+        {
+            id: {{ stay.id }},
+            name: "{{ stay.name|escapejs }}",
+            city: "{{ stay.city|escapejs }}",
+            address: "{{ stay.address|escapejs }}",
+            price: "{{ stay.start_price|format_um }}",
+            rating: {{ stay.rating }},
+            lat: {{ stay.latitude }},
+            lng: {{ stay.longitude }},
+            type: "{{ stay.get_stay_type_display }}",
+            url: "/stays/{{ stay.id }}/"
+        }{% if not forloop.last %},{% endif %}
+        {% endif %}
+        {% endfor %}
+    ];
+
+    let bounds = [];
+    staysData.forEach(stay => {
+        const marker = L.marker([stay.lat, stay.lng]).addTo(map);
+        
+        const popupContent = `
+            <div style="min-width: 200px;">
+                <h6 class="mb-1">${stay.name}</h6>
+                <p class="mb-1 small text-muted">${stay.city} - ${stay.type}</p>
+                <p class="mb-1"><strong>${stay.price}</strong></p>
+                <p class="mb-2 small">التقييم: ${stay.rating}/5 ⭐</p>
+                <a href="${stay.url}" class="btn btn-sm btn-success">عرض التفاصيل</a>
+            </div>
+        `;
+        
+        marker.bindPopup(popupContent);
+        bounds.push([stay.lat, stay.lng]);
+    });
+
+    // Fit map to show all markers if there are any
+    if (bounds.length > 0) {
+        map.fitBounds(bounds, { padding: [20, 20] });
+    }
+}
 </script>
+{% endblock %}
+
 {% endblock %}
