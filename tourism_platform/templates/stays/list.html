@@ -6,8 +6,11 @@
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h3 class="mb-0">مقارنة أسعار الإقامة</h3>
   <div>
+    <form method="get" action="/stays/comparison/" class="d-inline" id="comparison-form">
+      <input type="hidden" name="ids" id="comparison-ids">
+      <button type="submit" class="btn btn-primary me-2 d-none" id="compare-btn">مقارنة المحدد (<span id="compare-count">0</span>)</button>
+    </form>
     {% if compare_ids %}
-      <a class="btn btn-primary me-2" href="/stays/comparison/?ids={{ compare_ids|join:',' }}">مقارنة المحدد ({{ compare_ids|length }})</a>
       <a class="btn btn-outline-secondary" href="/stays/">مسح التحديد</a>
     {% endif %}
     <a class="btn btn-outline-success" href="/admin/stays/stay/">إضافة بيانات من لوحة التحكم</a>
@@ -50,8 +53,7 @@
         <div class="card-header d-flex justify-content-between align-items-center">
           <div class="form-check">
             <input class="form-check-input compare-checkbox" type="checkbox" 
-                   value="{{ s.id }}" id="compare_{{ s.id }}"
-                   {% if s.id|stringformat:"s" in compare_ids %}checked{% endif %}>
+                   value="{{ s.id }}" id="compare_{{ s.id }}">
             <label class="form-check-label small" for="compare_{{ s.id }}">
               اختر للمقارنة
             </label>
@@ -132,16 +134,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Initialize state on page load
+    updateCompareSelection();
+    
     function updateCompareSelection() {
         const checkedBoxes = document.querySelectorAll('.compare-checkbox:checked');
         const ids = Array.from(checkedBoxes).map(cb => cb.value);
         
-        // Update URL with selected IDs
-        const url = new URL(window.location);
-        url.searchParams.delete('compare');
-        ids.forEach(id => url.searchParams.append('compare', id));
+        const compareBtn = document.getElementById('compare-btn');
+        const compareCount = document.getElementById('compare-count');
+        const comparisonIds = document.getElementById('comparison-ids');
         
-        window.location.href = url.toString();
+        if (ids.length > 0) {
+            compareBtn.classList.remove('d-none');
+            compareCount.textContent = ids.length;
+            comparisonIds.value = ids.join(',');
+        } else {
+            compareBtn.classList.add('d-none');
+            comparisonIds.value = '';
+        }
     }
 
     // Initialize map
