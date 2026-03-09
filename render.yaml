@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: tourism-platform
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements.txt && python tourism_platform/manage.py migrate && python tourism_platform/manage.py collectstatic --noinput
+    startCommand: gunicorn tourism_platform.wsgi:application --bind 0.0.0.0:8000
+    envVars:
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        value: "django-insecure-j^cb)jmvxcspaf*f4mei4v)jw$0&-77sixd@h+b^*ma^n=2#j*"
+      - key: ALLOWED_HOSTS
+        value: "tourism-platform.onrender.com"
