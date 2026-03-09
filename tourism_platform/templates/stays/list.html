@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load currency %}
-{% block title %}مقارنة الإقامة{% endblock %}
+{% block title %}قائمة الإقامة{% endblock %}
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -8,10 +8,10 @@
   <div>
     <form method="get" action="/stays/comparison/" class="d-inline" id="comparison-form">
       <input type="hidden" name="ids" id="comparison-ids">
-      <button type="submit" class="btn btn-primary me-2 d-none" id="compare-btn">مقارنة المحدد (<span id="compare-count">0</span>)</button>
+      <button type="submit" class="btn btn-outline-success me-2" id="compare-btn">مقارنة المحدد (<span id="compare-count">0</span>)</button>
     </form>
     {% if compare_ids %}
-      <a class="btn btn-outline-secondary" href="/stays/">مسح التحديد</a>
+      <a class="btn btn-outline-success" href="/stays/">مسح التحديد</a>
     {% endif %}
     <a class="btn btn-outline-success" href="/admin/stays/stay/">إضافة بيانات من لوحة التحكم</a>
   </div>
@@ -52,8 +52,8 @@
       <div class="card card-hover h-100 shadow-sm">
         <div class="card-header d-flex justify-content-between align-items-center">
           <div class="form-check">
-            <input class="form-check-input compare-checkbox" type="checkbox" 
-                   value="{{ s.id }}" id="compare_{{ s.id }}">
+            <input class="form-check-input compare-checkbox" type="checkbox"
+            value="{{ s.id }}" id="compare_{{ s.id }}">
             <label class="form-check-label small" for="compare_{{ s.id }}">
               اختر للمقارنة
             </label>
@@ -71,7 +71,7 @@
             >
           {% else %}
             <div class="bg-light d-flex align-items-center justify-content-center"
-                 style="height:220px;">
+            style="height:220px;">
               <span class="text-muted small">لا توجد صورة</span>
             </div>
           {% endif %}
@@ -127,97 +127,61 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const checkboxes = document.querySelectorAll('.compare-checkbox');
-    
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            updateCompareSelection();
-        });
-    });
-    
-    // Initialize state on page load
-    updateCompareSelection();
+    const compareCount = document.getElementById('compare-count');
+    const comparisonIds = document.getElementById('comparison-ids');
     
     function updateCompareSelection() {
         const checkedBoxes = document.querySelectorAll('.compare-checkbox:checked');
         const ids = Array.from(checkedBoxes).map(cb => cb.value);
         
-        const compareBtn = document.getElementById('compare-btn');
-        const compareCount = document.getElementById('compare-count');
-        const comparisonIds = document.getElementById('comparison-ids');
-        
-        if (ids.length > 0) {
-            compareBtn.classList.remove('d-none');
-            compareCount.textContent = ids.length;
-            comparisonIds.value = ids.join(',');
-        } else {
-            compareBtn.classList.add('d-none');
-            comparisonIds.value = '';
-        }
+        compareCount.textContent = ids.length;
+        comparisonIds.value = ids.join(',');
     }
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateCompareSelection);
+    });
+    
+    // Initialize
+    updateCompareSelection();
+});
+<script>
 
-    // Initialize map
-    initStaysMap();
+const staysData = [
+{% for stay in items %}
+{
+    id: {{ stay.id }},
+    name: "{{ stay.name|escapejs }}",
+    city: "{{ stay.city|escapejs }}",
+    address: "{{ stay.address|escapejs }}",
+    price: "{{ stay.start_price|format_um }}",
+    rating: {{ stay.rating }},
+    type: "{{ stay.get_stay_type_display }}",
+    url: "/stays/{{ stay.id }}/"
+}{% if not forloop.last %},{% endif %}
+{% endfor %}
+];
+
+const container = document.getElementById("stays-list");
+
+staysData.forEach(stay => {
+
+const content = `
+<div class="card mb-3 p-3">
+    <h6>${stay.name}</h6>
+    <p>${stay.city} - ${stay.type}</p>
+    <p><strong>${stay.price}</strong></p>
+    <p>التقييم: ${stay.rating}/5 ⭐</p>
+    <a href="${stay.url}" class="btn btn-success">عرض التفاصيل</a>
+</div>
+`;
+
+container.innerHTML += content;
+
 });
 
-function initStaysMap() {
-    const mapEl = document.getElementById('stays-map');
-    if (!mapEl) return;
-
-    // Default center (Morocco)
-    const defaultCenter = [31.7917, -7.0926];
-    const defaultZoom = 5;
-
-    const map = L.map('stays-map').setView(defaultCenter, defaultZoom);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-        maxZoom: 19
-    }).addTo(map);
-
-    // Add markers for stays
-    const staysData = [
-        {% for stay in items %}
-        {% if stay.latitude and stay.longitude %}
-        {
-            id: {{ stay.id }},
-            name: "{{ stay.name|escapejs }}",
-            city: "{{ stay.city|escapejs }}",
-            address: "{{ stay.address|escapejs }}",
-            price: "{{ stay.start_price|format_um }}",
-            rating: {{ stay.rating }},
-            lat: {{ stay.latitude }},
-            lng: {{ stay.longitude }},
-            type: "{{ stay.get_stay_type_display }}",
-            url: "/stays/{{ stay.id }}/"
-        }{% if not forloop.last %},{% endif %}
-        {% endif %}
-        {% endfor %}
-    ];
-
-    let bounds = [];
-    staysData.forEach(stay => {
-        const marker = L.marker([stay.lat, stay.lng]).addTo(map);
-        
-        const popupContent = `
-            <div style="min-width: 200px;">
-                <h6 class="mb-1">${stay.name}</h6>
-                <p class="mb-1 small text-muted">${stay.city} - ${stay.type}</p>
-                <p class="mb-1"><strong>${stay.price}</strong></p>
-                <p class="mb-2 small">التقييم: ${stay.rating}/5 ⭐</p>
-                <a href="${stay.url}" class="btn btn-sm btn-success">عرض التفاصيل</a>
-            </div>
-        `;
-        
-        marker.bindPopup(popupContent);
-        bounds.push([stay.lat, stay.lng]);
-    });
-
-    // Fit map to show all markers if there are any
-    if (bounds.length > 0) {
-        map.fitBounds(bounds, { padding: [20, 20] });
-    }
-}
 </script>
+
 {% endblock %}
 
 {% endblock %}

@@ -24,10 +24,15 @@ def stay_list(request):
     cities = Stay.objects.values_list('city', flat=True).distinct()
 
     # Handle comparison selection
-    compare_ids = request.GET.getlist('compare')
+    compare_ids = request.GET.getlist('compare') or request.GET.get('ids', '').split(',') if request.GET.get('ids') else []
     compare_stays = []
     if compare_ids:
-        compare_stays = Stay.objects.filter(id__in=compare_ids)
+        try:
+            compare_ids = [int(id.strip()) for id in compare_ids if id.strip()]
+            compare_stays = Stay.objects.filter(id__in=compare_ids)
+        except (ValueError, TypeError):
+            compare_ids = []
+            compare_stays = []
 
     context = {
         "items": qs,
