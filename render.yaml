@@ -6,7 +6,7 @@ services:
     plan: free
     pythonVersion: 3.11
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn tourism_platform.wsgi:application --bind 0.0.0.0:8080 --workers 1 --timeout 120
+    startCommand: gunicorn tourism_platform.tourism_platform.wsgi:application --bind 0.0.0.0:8080 --workers 1 --timeout 120
     envVars:
       - key: DEBUG
         value: "False"
