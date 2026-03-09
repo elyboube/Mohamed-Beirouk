@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'destinations',
-    'stays',
-    'guides',
-    'accounts',
+    'tourism_platform.destinations',
+    'tourism_platform.stays',
+    'tourism_platform.guides',
+    'tourism_platform.accounts',
+
     
 ]
 
