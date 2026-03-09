@@ -26,8 +26,12 @@ SECRET_KEY = 'django-insecure-j^cb)jmvxcspaf*f4mei4v)jw$0&-77sixd@h+b^*ma^n=2#j*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'tourism-platform-6i5b.onrender.com',
+    '*.onrender.com',
+]
 
 # Application definition
 INSTALLED_APPS = [
