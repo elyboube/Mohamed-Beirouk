@@ -1,7 +1,10 @@
 import os
+import sys
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tourism_platform.tourism_platform.settings')
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'tourism_platform'))
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tourism_platform.settings')
 django.setup()
 
 from django.contrib.auth.models import User
