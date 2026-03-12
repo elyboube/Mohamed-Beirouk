@@ -147,41 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-const staysData = [
-{% for stay in items %}
-{
-    id: {{ stay.id }},
-    name: "{{ stay.name|escapejs }}",
-    city: "{{ stay.city|escapejs }}",
-    address: "{{ stay.address|escapejs }}",
-    price: "{{ stay.start_price|format_um }}",
-    rating: {{ stay.rating }},
-    type: "{{ stay.get_stay_type_display }}",
-    url: "/stays/{{ stay.id }}/"
-}{% if not forloop.last %},{% endif %}
-{% endfor %}
-];
-
-const container = document.getElementById("stays-list");
-
-staysData.forEach(stay => {
-
-const content = `
-<div class="card mb-3 p-3">
-    <h6>${stay.name}</h6>
-    <p>${stay.city} - ${stay.type}</p>
-    <p><strong>${stay.price}</strong></p>
-    <p>التقييم: ${stay.rating}/5 ⭐</p>
-    <a href="${stay.url}" class="btn btn-success">عرض التفاصيل</a>
-</div>
-`;
-
-container.innerHTML += content;
-
-});
-
-<script>
-
 {% endblock %}
 
 {% endblock %}
