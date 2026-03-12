@@ -23,7 +23,7 @@ local_settings.py
 .DS_Store
 
 # Media & Static
-/media/
+
 /staticfiles/
 /static/
 
