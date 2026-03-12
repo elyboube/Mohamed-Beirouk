@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '*.onrender.com',
-    'mohamed-beirouk.onrender.com',
+    'tourisme-mauritanie.onrender.com'
 ]
 
 # Application definition
