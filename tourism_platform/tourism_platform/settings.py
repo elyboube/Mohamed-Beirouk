@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-j^cb)jmvxcspaf*f4mei4v)jw$0&-77sixd@h+b^*ma^n=2#j*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -51,6 +51,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -84,29 +85,12 @@ WSGI_APPLICATION = 'tourism_platform.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 # Par défaut : SQLite (fonctionne sans installation).
 # Pour Oracle : définir USE_ORACLE_DB=1 et les variables ORACLE_* ci-dessous.
-
-USE_ORACLE_DB = os.getenv('USE_ORACLE_DB', '').strip() == '1'
-
-if USE_ORACLE_DB:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.oracle',
-            'NAME': os.getenv('ORACLE_NAME', 'XE'),
-            'USER': os.getenv('ORACLE_USER', 'tourism_user'),
-            'PASSWORD': os.getenv('ORACLE_PASSWORD', ''),
-            'HOST': os.getenv('ORACLE_HOST', 'localhost'),
-            'PORT': os.getenv('ORACLE_PORT', '1521'),
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
-
+}
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
@@ -163,3 +147,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Prints to co
 # EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 # EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'noreply@tourism-platform.local'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
