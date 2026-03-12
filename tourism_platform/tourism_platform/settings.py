@@ -29,8 +29,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'tourism-platform-6i5b.onrender.com',
     '*.onrender.com',
+    'mohamed-beirouk.onrender.com',
 ]
 
 # Application definition
