@@ -75,17 +75,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tourism_platform.wsgi.application'
 
+import dj_database_url
 
-# Database
-# https://docs.djangoproject.com/en/6.0/ref/settings/#databases
-# Par défaut : SQLite (fonctionne sans installation).
-# Pour Oracle : définir USE_ORACLE_DB=1 et les variables ORACLE_* ci-dessous.
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+DATABASE_URL = os.getenv('DATABASE_URL')
+
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.config(default=DATABASE_URL)
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
