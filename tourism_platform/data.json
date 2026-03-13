@@ -1,0 +1,1455 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-01-15T11:44:41.620Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "تكانت",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-01-15T11:46:01.319Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "ادرار",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-01-15T12:02:11.611Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "ادرار - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-01-15T12:03:49.761Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "ادرار - image",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"File\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-01-15T23:06:10.534Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "سيد احمد",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-01-15T23:08:00.998Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "تكانت - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-01-15T23:08:31.019Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "2",
+    "object_repr": "محمد",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-01-15T23:09:21.257Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "تكانت",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-01-15T23:16:21.188Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "1",
+    "object_repr": "سيد احمد - 2",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-01-15T23:43:37.026Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "2",
+    "object_repr": "محمد - 5",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-01-15T23:53:14.420Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "سيد احمد",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-01-15T23:53:38.196Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "2",
+    "object_repr": "محمد",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-01-16T01:19:26.991Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "تجكجة",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-01-16T01:23:16.241Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "3",
+    "object_repr": "محمد اسويلم",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-01-16T07:59:58.398Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "تكانت - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-01-16T08:07:50.069Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "ادرار - image",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-01-16T08:10:15.687Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "ادرار - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-01-16T09:07:20.630Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "4",
+    "object_repr": "ادرار - image",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-01-16T09:07:30.515Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "ادرار - image",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"File\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-01-16T09:07:45.956Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "تكانت - image",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"File\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-01-16T09:07:52.241Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "تكانت - image",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"File\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-01-16T09:08:06.499Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "تكانت - image",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-01-16T09:23:33.466Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "تكانت - image",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-01-16T09:24:01.841Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "تكانت - image",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-01-16T09:24:01.841Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "ادرار - image",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-01-16T10:31:28.406Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "5",
+    "object_repr": "تكانت - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-01-16T10:56:16.639Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "ادرار",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-01-16T10:58:23.941Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "4",
+    "object_repr": "شنقيط",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-01-16T10:59:02.754Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "6",
+    "object_repr": "شنقيط - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-01-16T10:59:24.600Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "5",
+    "object_repr": "تكانت - image",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-01-16T10:59:54.595Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "7",
+    "object_repr": "تجكجة - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-01-16T11:00:57.246Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "3",
+    "object_repr": "تجكجة",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-01-16T11:01:11.340Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "تكانت",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-01-16T11:02:44.961Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "القدية",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-01-16T11:03:09.382Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "8",
+    "object_repr": "القدية - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-01-16T11:04:54.638Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "6",
+    "object_repr": "الرشيد",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-01-16T11:05:58.740Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "9",
+    "object_repr": "الرشيد - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-01-16T11:47:47.281Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "تكانت",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"stay media\", \"object\": \"Image for \\u062a\\u0643\\u0627\\u0646\\u062a\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-01-16T13:28:10.401Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "نجم الشمال",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"stay media\", \"object\": \"Image for \\u0646\\u062c\\u0645 \\u0627\\u0644\\u0634\\u0645\\u0627\\u0644\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-01-16T13:51:24.507Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "3",
+    "object_repr": "محمد اسويلم",
+    "action_flag": 2,
+    "change_message": "[{\"added\": {\"name\": \"guide media\", \"object\": \"\\u0645\\u062d\\u0645\\u062f \\u0627\\u0633\\u0648\\u064a\\u0644\\u0645 - image\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-01-16T18:52:36.143Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "10",
+    "object_repr": "تجكجة - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-01-16T18:52:55.860Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "11",
+    "object_repr": "تجكجة - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-01-16T18:52:56.082Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "12",
+    "object_repr": "تجكجة - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-01-16T18:53:08.837Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "13",
+    "object_repr": "تجكجة - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-01-16T18:53:22.132Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "14",
+    "object_repr": "تجكجة - image",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-01-17T09:00:31.738Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "ياوطن",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-01-17T09:02:05.870Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "ياوطن",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2026-01-17T09:23:42.959Z",
+    "user": 1,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "اخ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2026-02-04T16:09:33.580Z",
+    "user": 4,
+    "content_type": 11,
+    "object_id": "4",
+    "object_repr": "sidiahmed",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2026-02-04T16:11:55.073Z",
+    "user": 4,
+    "content_type": 11,
+    "object_id": "5",
+    "object_repr": "sid'amed ely",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}, {\"added\": {\"name\": \"guide media\", \"object\": \"sid'amed ely - image\"}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2026-02-04T16:13:15.453Z",
+    "user": 4,
+    "content_type": 11,
+    "object_id": "4",
+    "object_repr": "sidiahmed",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2026-03-05T23:12:14.535Z",
+    "user": 4,
+    "content_type": 18,
+    "object_id": "1",
+    "object_repr": "sidahmed ely ♥ نجم الشمال",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2026-03-05T23:13:31.037Z",
+    "user": 4,
+    "content_type": 17,
+    "object_id": "1",
+    "object_repr": "sidi ♥ تجكجة",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2026-03-06T00:43:58.503Z",
+    "user": 4,
+    "content_type": 8,
+    "object_id": "10",
+    "object_repr": "Ouarzazate",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2026-03-06T00:44:57.449Z",
+    "user": 4,
+    "content_type": 8,
+    "object_id": "9",
+    "object_repr": "Luxor",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2026-03-06T00:44:57.449Z",
+    "user": 4,
+    "content_type": 8,
+    "object_id": "8",
+    "object_repr": "Giza Pyramids",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2026-03-06T00:44:57.449Z",
+    "user": 4,
+    "content_type": 8,
+    "object_id": "7",
+    "object_repr": "تجكجة",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2026-03-06T00:46:08.763Z",
+    "user": 4,
+    "content_type": 10,
+    "object_id": "5",
+    "object_repr": "Ouarzazate Hotel",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2026-03-06T00:46:08.763Z",
+    "user": 4,
+    "content_type": 10,
+    "object_id": "4",
+    "object_repr": "Luxor Hotel",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2026-03-06T00:46:08.763Z",
+    "user": 4,
+    "content_type": 10,
+    "object_id": "3",
+    "object_repr": "Giza Pyramids Hotel",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2026-03-06T00:46:53.737Z",
+    "user": 4,
+    "content_type": 11,
+    "object_id": "8",
+    "object_repr": "John",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2026-03-06T00:46:53.737Z",
+    "user": 4,
+    "content_type": 11,
+    "object_id": "7",
+    "object_repr": "Fatima",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 63,
+  "fields": {
+    "action_time": "2026-03-06T00:46:53.737Z",
+    "user": 4,
+    "content_type": 11,
+    "object_id": "6",
+    "object_repr": "Ahmed",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 64,
+  "fields": {
+    "action_time": "2026-03-07T09:38:30.203Z",
+    "user": 4,
+    "content_type": 2,
+    "object_id": "1",
+    "object_repr": "sidiahmed",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 65,
+  "fields": {
+    "action_time": "2026-03-07T09:41:24.766Z",
+    "user": 4,
+    "content_type": 2,
+    "object_id": "1",
+    "object_repr": "sidiahmed",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 66,
+  "fields": {
+    "action_time": "2026-03-07T09:43:17.970Z",
+    "user": 4,
+    "content_type": 15,
+    "object_id": "2",
+    "object_repr": "اخ",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 67,
+  "fields": {
+    "action_time": "2026-03-07T09:43:32.747Z",
+    "user": 4,
+    "content_type": 15,
+    "object_id": "1",
+    "object_repr": "ياوطن",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$zaY0mEcKzsROkbmptJ4jo9$9rnap8TCNHh75VOlmY8bh8xsYvntS4Tm3/dVaZq8BUA=",
+    "last_login": "2026-01-16T07:25:57.981Z",
+    "is_superuser": true,
+    "username": "y",
+    "first_name": "",
+    "last_name": "",
+    "email": "hamada09sw@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-01-15T11:18:07.944Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$fnDxzkQmUnfgXT86egwOO6$o1YKuI+1SEfqieczcCKtDS0q123NosqLvbYst6qVb4A=",
+    "last_login": "2026-01-16T06:54:44.410Z",
+    "is_superuser": false,
+    "username": "hamada",
+    "first_name": "",
+    "last_name": "",
+    "email": "hamada09sw@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-16T06:54:39.759Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$SSCGppU2nNOEQ7v0PHIDoV$WjzpnFBBvWHVWGxj4QWTrNv02XoHqxQIW8WHGEClCuM=",
+    "last_login": "2026-01-17T15:40:37.205Z",
+    "is_superuser": false,
+    "username": "sidahmedely",
+    "first_name": "",
+    "last_name": "",
+    "email": "sidahmedelyboube@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-01-17T15:40:33.806Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$lgNN0kG37mgs55xfetO3CV$xfHJjNS3G4ebn5I2gdGnit3oTB5+X4LF0vC5P0mB2xo=",
+    "last_login": "2026-03-09T09:03:43.942Z",
+    "is_superuser": true,
+    "username": "sidahmed ely",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@example.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-02-04T15:51:11.019Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$NNevBwKha2eLdPI2YD9lY3$pNGpkcyRzcAcB2TawDOh4awUASSoxrfDh0yWCSLARX0=",
+    "last_login": "2026-02-21T23:54:59.281Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@tourism-platform.local",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-02-21T22:43:05.542Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$fcGgY9scQJE6iraBnS8vtA$OXcYVyugZXy2XTezXqsEZ8EA+Fdnz+f7CPbYWEQ/H60=",
+    "last_login": "2026-02-21T23:49:37.549Z",
+    "is_superuser": false,
+    "username": "sidi",
+    "first_name": "",
+    "last_name": "",
+    "email": "sidahmed@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-21T23:49:36.777Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$Ti6zmfaH1zFNGHmUxTpwba$vxQigNf8bl9gdOTxLwbZl5Xd6VxdrhQL8/0h/gSyZWg=",
+    "last_login": "2026-02-21T23:58:02.609Z",
+    "is_superuser": false,
+    "username": "salem",
+    "first_name": "",
+    "last_name": "",
+    "email": "salem@gmai.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-02-21T23:58:00.840Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$0SnITsbA2PpEujZ9cSpZc6$jca1fzziDknC8dszrg+dTIvQe2iJFYcNzJ478qNCnm4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "demo",
+    "first_name": "",
+    "last_name": "",
+    "email": "demo@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-06T00:17:37.816Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$eK2qknvN2FBP82Jamsmire$C3sTlVPpSIc4G2PQM1xtHa2LCMrEh3ukh0AiO/yN+7U=",
+    "last_login": "2026-03-06T01:27:28.668Z",
+    "is_superuser": false,
+    "username": "sidati",
+    "first_name": "",
+    "last_name": "",
+    "email": "sidi@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-06T01:27:27.172Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "5mskjkldtz5iweiu4lh46dmxk3uyqhoe",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-fyjpOYO1u7ZxADlSnFSIu0OkFNC-mXkvlmBbW9pGWdKU2ZlZdvrdEOhR-g7yHfpt5jT3dZmQ7wo_6ODXOZfn5XD_DhqM9q21coqUr-iltmQESCuq864ErCBBu1gRjDbFkUWoEYNQNlIgH4vVJrP3B9isN9k:1vtwlt:lR3xQqR1Yi6reNKCrbFdMtIe69MhGNe1Ms6KBueDMhc",
+    "expire_date": "2026-03-07T23:52:25.450Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "5u4qav6hwukf4flgf0d6f9m2abwckns9",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlmOvA5rSnrOYO0vJIAcKZ8q4u4QKQW0b2be5gqtS1_W2aYyqLs4cKffjUmeVnegD6r30ctYl2lgvyv-oLO_jWqv6-H-HfQ0998aW0MiZaQMZDFGZFLIoUFqLAfmzkg6UEnSCjQYzwhJDaKY5BRa9_4ADyU4yQ:1vzWWd:_9YEuDQMngYTqBDQy9sOueiG0H3MhNTKzExxigvwA4w",
+    "expire_date": "2026-03-23T09:03:43.950Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "9av2osgo314wz6yho0nudeqaur61549h",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnGf1PScwZrs7vGAWRL-VSIu5NIKaCdmffeIsO61LzOPOWRxEUEcfplA-CT2y7oAe3eJfa2TOMg90Qedpa3Tvy6Hu3fQYW5buuifQSXjPIO0CBFHV0xPnoLUDSxDxSUYYXIbIZzipaUDZhM3CA5Lz5f4Kc3tw:1vtwrK:ERxXDFJGTY3ucJm9HqEHk_CUXDnQ4cTt8m_sSv9pEfs",
+    "expire_date": "2026-03-07T23:58:02.623Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "fg7o0sxbjb9ae56lhgonjqqp3jkdeb84",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlmOvA5rSnrOYO0vJIAcKZ8q4u4QKQW0b2be5gqtS1_W2aYyqLs4cKffjUmeVnegD6r30ctYl2lgvyv-oLO_jWqv6-H-HfQ0998aW0MiZaQMZDFGZFLIoUFqLAfmzkg6UEnSCjQYzwhJDaKY5BRa9_4ADyU4yQ:1vzUub:7h-1JPmhBQHKhBFmA1MnXAYSoRcl4Et_sxgI3TeqAAM",
+    "expire_date": "2026-03-23T07:20:21.576Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "gqeeijrr4y32nt6ea9p1nuxj6m3kin2k",
+  "fields": {
+    "session_data": ".eJxVjEsOAiEQBe_C2hBoGhCX7ucMBLo7MmqGZD4r4911klno9lXVe6lctrXlbZE5j6wuCtXpd6uFHjLtgO9lunVNfVrnsepd0Qdd9NBZntfD_TtoZWnfGgql4GJAApMQrU3GW_aEEVgAzhW5mpS8IDMk8kHAFnLORQlAENT7A7dANt8:1vyKAh:WzcTcMn8JDQBKeJsb20qWoehlIbwUQoQQmQWNlJgdJU",
+    "expire_date": "2026-03-20T01:40:07.395Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "p8xl7v1gqlhvy3ifiasf3gsklkyjbvub",
+  "fields": {
+    "session_data": ".eJxVjEsKwjAUAO_y1hKaJmlIl-49Q3i_mKq00LQr8e5S6EK3M8O8IeO-1bw3XfMkMIKFyy8j5KfOh5AHzvfF8DJv60TmSMxpm7ktoq_r2f4NKrYKI2jU5JioCFFMxapFtAOFhBrY2eJ7EVafXOe7wYXgmWIvzvnklcQyfL4XkDi2:1vgeDW:NRy-cneT9-dFoGhEeKBhoP7jUTxmM3Gk2C4vIhPtxas",
+    "expire_date": "2026-01-30T07:25:58.114Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qawynhjko5nw07ir3uf2aeavkib9nodr",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnE_1DScwZr17vGAWRLcVIh7k4ipYD2zcx7iwjrUuLaeY4TiYvQ4vS7IaQn1x3QA-q9ydTqMk8od0UetMtbI35dD_fvoEAvW530mVGF0WUKbJTJafCDzd4hk8fkNmqtBZcsae8JgTM6UqBQ-zEYEJ8vAEw4zA:1vh8Pl:K8UpEFvbFPKcrPPVH97wpwWxBlCxfzu4BmQrlDiOKd4",
+    "expire_date": "2026-01-31T15:40:37.224Z"
+  }
+},
+{
+  "model": "destinations.homevideo",
+  "pk": 1,
+  "fields": {
+    "title": "ياوطن",
+    "file": "home_videos/ياوطن.mp4",
+    "is_published": true,
+    "order": 2
+  }
+},
+{
+  "model": "destinations.destination",
+  "pk": 3,
+  "fields": {
+    "name": "تجكجة",
+    "region": "تكانت",
+    "city": "",
+    "latitude": null,
+    "longitude": null,
+    "description": "تجكجة مدينة تاريخية تقع في وسط موريتانيا، وهي عاصمة ولاية تكانت. تأسست في القرن 17م، واشتهرت بدورها العلمي والديني وبكونها محطة مهمة على طرق القوافل الصحراوية. عُرفت تجكجة بعلمائها وشعرائها، وبواحاتها التي وفّرت الاستقرار في قلب الصحراء. ما تزال المدينة تحتفظ بطابعها التقليدي ومكانتها الثقافية في الذاكرة الموريتانية.",
+    "best_time_to_visit": "الخريف والشتاء",
+    "is_published": true,
+    "rating": "0.00"
+  }
+},
+{
+  "model": "destinations.destination",
+  "pk": 4,
+  "fields": {
+    "name": "شنقيط",
+    "region": "ادرار",
+    "city": "",
+    "latitude": null,
+    "longitude": null,
+    "description": "شنقيط مدينة تاريخية تقع في شمال موريتانيا بمنطقة آدرار، وتُعد من أقدم الحواضر العلمية في الصحراء الكبرى. تأسست في القرن 13م، واشتهرت كمركز للتجارة والقوافل وموئل للعلماء والفقهاء. تضم شنقيط مكتبات عريقة تحتوي آلاف المخطوطات في العلوم الشرعية واللغة والفلك، كما تُعد من المدن الإسلامية المصنّفة ضمن التراث العالمي. رغم طابعها الصحراوي الهادئ اليوم، ما تزال رمزًا للهوية الثقافية والعلمية الموريتانية.",
+    "best_time_to_visit": "الكيطنة الشتاء",
+    "is_published": true,
+    "rating": "0.00"
+  }
+},
+{
+  "model": "destinations.destination",
+  "pk": 5,
+  "fields": {
+    "name": "القدية",
+    "region": "تكانت",
+    "city": "",
+    "latitude": null,
+    "longitude": null,
+    "description": "القدية مدينة تاريخية قديمة تقع في ولاية تكانت وسط موريتانيا. كانت القدية من الحواضر المهمة في المنطقة، واشتهرت بدورها العلمي والديني وبعلمائها، كما كانت محطة معروفة في محيط الواحات ومسارات التنقل التقليدية. اندثرت المدينة مع مرور الزمن، ولم يبقَ منها اليوم إلا آثار وشواهد تاريخية، لكنها ما تزال حاضرة في الذاكرة الثقافية لتكانت وموريتانيا عمومًا.",
+    "best_time_to_visit": "الخريف والشتاء",
+    "is_published": true,
+    "rating": "0.00"
+  }
+},
+{
+  "model": "destinations.destination",
+  "pk": 6,
+  "fields": {
+    "name": "الرشيد",
+    "region": "تكانت",
+    "city": "",
+    "latitude": null,
+    "longitude": null,
+    "description": "الرشيد مدينة تاريخية تقع في ولاية تكانت وسط موريتانيا، وتُعد من أقدم الحواضر في المنطقة. تأسست في القرون الوسطى، وبرزت كمركز علمي وديني مهم، حيث اشتهرت بمحاظرها وعلمائها، وكانت مقصدًا لطلاب العلم من أنحاء متعددة. كما لعبت الرشيد دورًا في الحياة الاجتماعية والاقتصادية ضمن مجال الواحات ومسارات التنقل التقليدية. ورغم تراجع عمرانها اليوم، ما تزال مكانتها التاريخية والثقافية حاضرة في الذاكرة الموريتانية.",
+    "best_time_to_visit": "الخريف والشتاء",
+    "is_published": true,
+    "rating": "0.00"
+  }
+},
+{
+  "model": "destinations.media",
+  "pk": 6,
+  "fields": {
+    "destination": 4,
+    "kind": "image",
+    "file": "destinations/شنقيط_L3M0yPo.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "destinations.media",
+  "pk": 7,
+  "fields": {
+    "destination": 3,
+    "kind": "image",
+    "file": "destinations/تجكجة_rnEqwZr.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "destinations.media",
+  "pk": 8,
+  "fields": {
+    "destination": 5,
+    "kind": "image",
+    "file": "destinations/القدية_tornF0P.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "destinations.media",
+  "pk": 9,
+  "fields": {
+    "destination": 6,
+    "kind": "image",
+    "file": "destinations/الرشيد_rtIn3Mt.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "destinations.media",
+  "pk": 10,
+  "fields": {
+    "destination": 3,
+    "kind": "image",
+    "file": "destinations/تجكجة_1.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "destinations.media",
+  "pk": 11,
+  "fields": {
+    "destination": 3,
+    "kind": "image",
+    "file": "destinations/تجكجة_2.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "destinations.media",
+  "pk": 12,
+  "fields": {
+    "destination": 3,
+    "kind": "image",
+    "file": "destinations/تجكجة_2_6rOhQEA.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "destinations.media",
+  "pk": 13,
+  "fields": {
+    "destination": 3,
+    "kind": "image",
+    "file": "destinations/تجكجة_3.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "destinations.media",
+  "pk": 14,
+  "fields": {
+    "destination": 3,
+    "kind": "image",
+    "file": "destinations/تجكجة_4.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "destinations.destinationfavorite",
+  "pk": 1,
+  "fields": {
+    "user": 6,
+    "destination": 3,
+    "added_at": "2026-03-05T23:13:31.033Z"
+  }
+},
+{
+  "model": "stays.stay",
+  "pk": 1,
+  "fields": {
+    "name": "تكانت",
+    "stay_type": "hotel",
+    "city": "تجكجة",
+    "start_price": "10000.00",
+    "rating": "4.0",
+    "address": "",
+    "latitude": 20.5169,
+    "longitude": -13.0499,
+    "description": ""
+  }
+},
+{
+  "model": "stays.stay",
+  "pk": 2,
+  "fields": {
+    "name": "نجم الشمال",
+    "stay_type": "hostel",
+    "city": "اطار",
+    "start_price": "2000.00",
+    "rating": "4.0",
+    "address": "",
+    "latitude": 20.5169,
+    "longitude": -13.0499,
+    "description": ""
+  }
+},
+{
+  "model": "stays.staymedia",
+  "pk": 1,
+  "fields": {
+    "stay": 1,
+    "kind": "image",
+    "file": "stays/تجكجة.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "stays.staymedia",
+  "pk": 2,
+  "fields": {
+    "stay": 2,
+    "kind": "image",
+    "file": "stays/نجم_الشمال.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "stays.booking",
+  "pk": 1,
+  "fields": {
+    "stay": 2,
+    "user": 9,
+    "check_in": "2026-03-06",
+    "check_out": "2026-03-07",
+    "guests": 1,
+    "total_price": "2000.00",
+    "status": "pending",
+    "created_at": "2026-03-06T01:38:04.889Z"
+  }
+},
+{
+  "model": "stays.booking",
+  "pk": 2,
+  "fields": {
+    "stay": 2,
+    "user": 4,
+    "check_in": "2026-03-06",
+    "check_out": "2026-03-15",
+    "guests": 110,
+    "total_price": "1980000.00",
+    "status": "pending",
+    "created_at": "2026-03-06T03:06:04.647Z"
+  }
+},
+{
+  "model": "stays.stayfavorite",
+  "pk": 1,
+  "fields": {
+    "user": 4,
+    "stay": 2,
+    "added_at": "2026-03-05T23:12:14.526Z"
+  }
+},
+{
+  "model": "guides.guide",
+  "pk": 3,
+  "fields": {
+    "name": "محمد اسويلم",
+    "city": "تجكجة",
+    "price_per_day": "2000.00",
+    "languages": "فرنسي عربي",
+    "specialties": "التاريخ"
+  }
+},
+{
+  "model": "guides.guide",
+  "pk": 5,
+  "fields": {
+    "name": "sid'amed ely",
+    "city": "Atar",
+    "price_per_day": "3.84",
+    "languages": "english",
+    "specialties": "pp"
+  }
+},
+{
+  "model": "guides.guidemedia",
+  "pk": 1,
+  "fields": {
+    "guide": 3,
+    "kind": "image",
+    "file": "guides/066.JPG",
+    "url": ""
+  }
+},
+{
+  "model": "guides.guidemedia",
+  "pk": 2,
+  "fields": {
+    "guide": 5,
+    "kind": "image",
+    "file": "guides/17521890585581.jpg",
+    "url": ""
+  }
+},
+{
+  "model": "guides.guidereview",
+  "pk": 1,
+  "fields": {
+    "guide": 3,
+    "user": 1,
+    "rating": 5,
+    "comment": "ررري",
+    "created_at": "2026-01-16T01:24:08.292Z"
+  }
+},
+{
+  "model": "guides.guidereview",
+  "pk": 2,
+  "fields": {
+    "guide": 3,
+    "user": 1,
+    "rating": 5,
+    "comment": "",
+    "created_at": "2026-01-16T01:24:23.306Z"
+  }
+},
+{
+  "model": "guides.guidereview",
+  "pk": 3,
+  "fields": {
+    "guide": 3,
+    "user": 1,
+    "rating": 5,
+    "comment": "ةىىاالالا",
+    "created_at": "2026-01-16T01:39:48.481Z"
+  }
+},
+{
+  "model": "guides.guidereview",
+  "pk": 4,
+  "fields": {
+    "guide": 5,
+    "user": 4,
+    "rating": 5,
+    "comment": "exelence   dud",
+    "created_at": "2026-02-04T16:14:29.635Z"
+  }
+},
+{
+  "model": "guides.guidereview",
+  "pk": 5,
+  "fields": {
+    "guide": 5,
+    "user": 4,
+    "rating": 2,
+    "comment": "sdfghjkjnh",
+    "created_at": "2026-02-14T11:45:37.325Z"
+  }
+},
+{
+  "model": "guides.guidereview",
+  "pk": 6,
+  "fields": {
+    "guide": 5,
+    "user": 9,
+    "rating": 4,
+    "comment": "mahou mhim",
+    "created_at": "2026-03-06T01:28:38.933Z"
+  }
+}
+]
